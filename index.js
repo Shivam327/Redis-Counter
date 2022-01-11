@@ -4,7 +4,7 @@ const process = require('process');
 
 const app = express();
 
-// Setting Up REdis Client
+// Setting Up Redis Client
 const client = redis.createClient({
   host: 'redis-server',
   port: 6379,
@@ -16,7 +16,9 @@ client.set('visits', 0);
 // Route
 app.get('/', (req, res) => {
   client.get('visits', (err, visits) => {
-    res.send('Number of visits ' + visits);
+    res.send(
+      `<h1 style="color: red; text-align: end">Number of visits : ${visits} </h1>`
+    );
     client.set('visits', parseInt(visits) + 1);
   });
   // process.exit(0);
