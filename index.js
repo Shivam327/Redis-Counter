@@ -16,9 +16,8 @@ client.set('visits', 0);
 // Route
 app.get('/', (req, res) => {
   client.get('visits', (err, visits) => {
-    res.send(
-      `<h1 style="color: red; text-align: end">Number of visits : ${visits} </h1>`
-    );
+    res.send('Number of visits' + visits);
+
     client.set('visits', parseInt(visits) + 1);
   });
   // process.exit(0);
